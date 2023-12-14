@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>OntspanVrij - Stresscoach voor iedereen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <!-- Favicon -->
+    <link href="img/favicons/favicon.ico" rel="icon">
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SiteName - Basic Wireframe For Static Websites" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="SiteName" />
+    <meta property="og:image" content="img/intro.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Ontspan<span>Vrij</span></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                <div class="navbar-nav align-items-center">
+                    <a href="#about" class="nav-item nav-link text-center">Over de coaches</a>
+                    <a href="#howitworks" class="nav-item nav-link text-center">Aanpak</a>
+                    <a href="#help" class="nav-item nav-link text-center">Direct hulp</a>
+                    <a href="#blog" class="nav-item nav-link text-center">Stress & burn-out</a>
+                    <a href="#faq" class="nav-item nav-link text-center">Veel gestelde vragen</a>
+                    <a href="#contact" class="nav-item nav-link text-center">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+
+    <!-- Hero Start -->
+    <div class="hero">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm-12 col-md-6">
+                    <div class="hero-text">
+                        <h1 class="typewrite pt-4" data-period="1000"
+                            data-type='[ "Stress? Angst? Paniek? Depressieve Klachten?", "Wij Kunnen Je Helpen!" ]'>
+                        </h1>
+                        <div class="wow fadeInUp" data-wow-delay="8.5s" style="visibility: hidden;">
+                            <p>Bij klachten als stress, angst, paniek, burn-out, somberheid, depressieve klachten,
+                                piekerdenken, hyperventilatie, fobieën, dwanghandelingen en dwanggedachten.</p>
+                            <div class="hero-btn">
+                                <a class="btn rounded-pill bg-semilight color-primary-dark px-5 py-3" href="">Meld je nu
+                                    aan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 py-5">
+                    <div class="hero-image" style="height: 550px;">
+                        <div class="d-flex align-items-center justify-content-center position-absolute"
+                            style="top:0;bottom:0;right:0;left:0;">
+                            <img id="stress" src="img/hero.png" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center position-absolute"
+                            style="top:0;bottom:0;right:0;left:0;">
+                            <img id="happy" src="img/hero2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="btn down-arrow text-primary">
+                <i class="fa-solid fa-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+    <script>
+        var TxtType = function (el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+            this.cicle = 0;
+        };
+
+        TxtType.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span id="wrap-typewrite">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 130 - Math.random() * 100;
+
+            if (this.isDeleting) { delta /= 2; }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                this.cicle++;
+                if (this.cicle == 2) {
+                    document.getElementById("wrap-typewrite").style.border = "none";
+                    return;
+                }
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = "#wrap-typewrite { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+    <!-- Hero End -->
+
+
+    <!-- About Start -->
+    <div class="about" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 wow fadeInUp" data-wow-delay=".1s">
+                    <div class="section-header text-left">
+                        <h2 class="text-capitalize">professionele therapeuten tot uw dienst</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>Al onze therapeuten zijn gediplomeerde professionals die bedreven zijn in het behandelen van
+                            uitdagingen zoals angst en depressie.
+                        </p>
+                        <p>We bieden u een vergelijkbare kwaliteit van therapie
+                            als bij een in-office therapeut, maar dan vanuit het comfort van uw huis.</p>
+                        <a class="btn bg-semilight text-primary-dark rounded-pill px-5 py-3 mt-3" href="#">Over de
+                            coaches</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mb-4">
+                        <div class="col-6 wow fadeInUp" data-wow-delay=".1s">
+                            <div class="about-img">
+                                <img src="img/therapist1.jpeg" alt="Image" style="border-radius: 100px 20px;">
+                            </div>
+                        </div>
+                        <div class="col-6 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="about-img p-4">
+                                <img src="img/therapist5.jpeg" alt="Image" style="border-radius: 20px 100px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 wow fadeInUp" data-wow-delay=".5s">
+                            <div class="about-img">
+                                <img src="img/therapist3.jpeg" alt="Image" style="border-radius: 20px 100px;">
+                            </div>
+                        </div>
+                        <div class="col-4 wow fadeInUp" data-wow-delay=".7s">
+                            <div class="about-img p-2">
+                                <img src="img/therapist4.jpeg" alt="Image" style="border-radius: 100px 20px;">
+                            </div>
+                        </div>
+                        <div class="col-4 wow fadeInUp" data-wow-delay=".9s">
+                            <div class="about-img p-4">
+                                <img src="img/therapist2.jpeg" alt="Image" style="border-radius: 20px 100px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- How it works Start -->
+    <div class="howworks bg-texture bg-light position-relative" id="howitworks">
+        <div class="pseudodiv position-relative">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="text-capitalize pt-5">Hoe het werkt</h2>
+                </div>
+                <div class="row align-items-center wow fadeInUp" data-wow-delay=".3s">
+                    <div class="col-md-6 p-5 position-relative">
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <div class="about-img p-3">
+                                    <img src="img/therapist6.jpeg" width="100%" alt="Image"
+                                        style="border-radius: 100px 20px 20px;">
+                                </div>
+                                <div class="about-img p-3">
+                                    <img src="img/therapist2.jpeg" width="100%" alt="Image"
+                                        style="border-radius: 20px 100px;">
+                                </div>
+                            </div>
+                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                <div class="about-img">
+                                    <img src="img/therapist7.jpeg" width="200" alt="Image"
+                                        style="border-radius: 20px 100px;">
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/check.png" class="position-absolute" alt="" style="top: 15%; left:80%;">
+                        <img src="img/selection.png" class="position-absolute" alt=""
+                            style="bottom: 10%; right:30%;rotate: -45deg;">
+                    </div>
+                    <div class="col-md-6 p-5">
+                        <h3>Laat u matchen met de beste therapeut voor u</h3>
+                        <div class="about-text">
+                            <p>Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis
+                                suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus
+                                eget velit tincid, quis suscip justo dictum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center text-primary py-5 wow pulse animated"
+                    data-wow-iteration="infinite" data-wow-duration="2s">
+                    <i class="fa-solid fa-3x fa-arrow-down-long"></i>
+                </div>
+                <div class="row align-items-center wow fadeInUp" data-wow-delay=".3s">
+                    <div class="col-md-6 p-5">
+                        <h3>Communiceer op jouw manier</h3>
+                        <div class="about-text">
+                            <p>Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis
+                                suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus
+                                eget velit tincid, quis suscip justo dictum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-5 position-relative">
+                        <div class="row mb-4">
+                            <div class="col-6 d-flex justify-content-center align-items-center">
+                                <div class="about-img">
+                                    <img src="img/work1.jpeg" width="200" alt="Image"
+                                        style="border-radius: 100px 20px;">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="about-img">
+                                    <img src="img/work2.jpeg" width="200" alt="Image"
+                                        style="border-radius: 20px 100px;">
+                                </div>
+                                <div class="about-img pt-4">
+                                    <img src="img/work3.jpeg" width="200" alt="Image"
+                                        style="border-radius: 20px 100px;">
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/love.png" class="position-absolute" alt="" style="top: 5%; left:40%;">
+                        <img src="img/likes.png" class="position-absolute" alt="" style="bottom: 10%; right:50%;">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-items-center text-primary py-5 wow pulse animated"
+                    data-wow-iteration="infinite" data-wow-duration="2s">
+                    <i class="fa-solid fa-3x fa-arrow-down-long"></i>
+                </div>
+                <div class="row align-items-center wow fadeInUp" data-wow-delay=".3s">
+                    <div class="col-md-6 p-5 position-relative">
+                        <div class="col-12 mb-4 d-flex justify-content-center align-items-center">
+                            <div class="about-img">
+                                <img src="img/couch.jpg" width="300" alt="Image" style="border-radius: 20px 100px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="about-img">
+                                    <img src="img/couch3.jpg" width="200" alt="Image"
+                                        style="border-radius: 100px 20px;">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="about-img">
+                                    <img src="img/couch2.jpg" width="200" alt="Image"
+                                        style="border-radius: 20px 100px;">
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/speech.png" class="position-absolute" alt="" style="top: 35%; left:10%;">
+                        <img src="img/calendar.png" class="position-absolute" alt="" style="bottom: 0; right:45%;">
+                    </div>
+                    <div class="col-md-6 p-5">
+                        <h3 class="text-secondary">Krijg therapie wanneer je het nodig hebt</h3>
+                        <div class="about-text">
+                            <p>Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis
+                                suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus
+                                eget velit tincid, quis suscip justo dictum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How it works End -->
+
+
+
+    <!-- Help Start -->
+    <div class="py-5 mb-5 wow fadeIn" data-wow-delay="0.3s" id="help">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="section-header text-left">
+                        <h2 class="text-capitalize text-secondary">Schakel nu professionele hulp in</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid, quis
+                            suscip justo dictum. Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget
+                            velit tincid, quis suscip justo dictum.
+                        </p>
+                        <a class="btn border border-secondary border-2 text-secondary text-capitalize font-bold rounded-pill px-5 py-3 mt-3"
+                            href="#">vraag om hulp</a>
+                    </div>
+                </div>
+                <div class="col-md-6 pt-3">
+                    <div class="about-img morphing-img p-5"
+                        style="background-image: url(img/help.jpeg); width: 80%; height: 450px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Help End -->
+
+
+    <!-- Blog Start -->
+    <div class="blog px-3" id="blog">
+        <div class="section-header text-center wow fadeInUp" data-wow-delay="0.2s">
+            <h2 class="text-capitalize text-secondary">Informatie over stress en burn-out</h2>
+        </div>
+        <div class="row g-3 wow fadeInUp" data-wow-delay="0.5s">
+            <a href="#" class="blog-item col-md-6 col-lg-4 col-xl-3">
+                <div class="blog-img">
+                    <img src="img/blog-1.jpg" alt="Blog" class="rounded">
+                </div>
+                <div class="blog-text">
+                    <h2 class="text-secondary my-2">Lorem ipsum dolor</h2>
+                    <p>Lorem ipsum dolor sit amet elit. Neca pretim miura bitur facili.</p>
+                </div>
+            </a>
+            <a href="#" class="blog-item col-md-6 col-lg-4 col-xl-3">
+                <div class="blog-img">
+                    <img src="img/blog-2.jpg" alt="Blog" class="rounded">
+                </div>
+                <div class="blog-text">
+                    <h2 class="text-secondary my-2">Neca pretim miura bitur</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet elit. Neca pretim miura bitur facili ornare velit non vulpte
+                        liqum metus tortor
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="blog-item col-md-6 col-lg-4 col-xl-3">
+                <div class="blog-img">
+                    <img src="img/blog-3.jpg" alt="Blog" class="rounded">
+                </div>
+                <div class="blog-text">
+                    <h2 class="text-secondary my-2">Bitur facili ornare velit non</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet elit. Neca pretim miura bitur facili ornare velit non vulpte
+                        liqum metus tortor
+                    </p>
+                </div>
+            </a>
+            <a href="#" class="blog-item col-md-6 col-lg-4 col-xl-3 d-lg-none d-xl-block">
+                <div class="blog-img">
+                    <img src="img/blog-4.jpg" alt="Blog" class="rounded">
+                </div>
+                <div class="blog-text">
+                    <h2 class="text-secondary my-2">Vulpte liqum metus tortor</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet elit. Neca pretim miura bitur facili ornare velit non vulpte
+                        liqum metus tortor
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.8s">
+            <a class="btn border border-secondary border-2 text-secondary text-capitalize font-bold rounded-pill px-5 py-3 mt-3"
+                href="#">alles zien</a>
+        </div>
+    </div>
+    <!-- Blog End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="testimonial bg-texture bg-secondary position-relative wow fadeInUp" data-wow-delay="0.1s"
+        id="testimonial">
+        <div class="pseudodiv">
+            <div class="container col-xl-4 py-5 position-relative">
+                <div class="section-header text-center">
+                    <h2 class="text-white text-capitalize">wat onze klanten zeggen</h2>
+                </div>
+                <div class="position-absolute text-secondary-light" style="top:30%; left:-10%; font-size: 3rem;">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <div class="position-absolute text-secondary-light" style="top:30%; right:-10%; font-size: 3rem;">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <div class="owl-carousel testimonials-carousel">
+                    <div class="testimonial-item text-white">
+                        <div class="testimonial-text">
+                            <p>
+                                Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid,
+                                quis
+                                suscip justo dictum.
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-5">
+                            <div class="testimonial-img">
+                                <img src="img/testimonial-1.jpg" alt="Image" class="p-1 rounded-circle me-3">
+                            </div>
+                            <div class="text-white text-start">
+                                <div>Klantnaam</div>
+                                <small>Beroep</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item text-white">
+                        <div class="testimonial-text">
+                            <p>
+                                Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid,
+                                quis
+                                suscip justo dictum.
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-5">
+                            <div class="testimonial-img">
+                                <img src="img/testimonial-2.jpg" alt="Image" class="p-1 rounded-circle me-3">
+                            </div>
+                            <div class="text-white text-start">
+                                <div>Klantnaam</div>
+                                <small>Beroep</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item text-white">
+                        <div class="testimonial-text">
+                            <p>
+                                Lorem ipsum dolor sit amet consec adipis elit. Etiam accums lacus eget velit tincid,
+                                quis
+                                suscip justo dictum.
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-5">
+                            <div class="testimonial-img">
+                                <img src="img/testimonial-3.jpg" alt="Image" class="p-1 rounded-circle me-3">
+                            </div>
+                            <div class="text-white text-start">
+                                <div>Klantnaam</div>
+                                <small>Beroep</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- FAQ Start -->
+    <div id="faq" class="position-relative pt-5 my-5">
+        <div class="container wow fadeInUp" data-wow-delay="0.2s">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-8 col-lg-6">
+                    <div class="section-header text-center">
+                        <h2 class="text-capitalize text-primary"><span>Veel </span> gestelde vragen</h2>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-lg-8">
+                    <div class="accordion faq-accordion" id="faqAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-primary collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                    aria-controls="collapseOne">
+                                    Wie gaat mij helpen?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem
+                                        facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-primary collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Hoe communiceer ik met mijn therapeut?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem
+                                        facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-primary collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    Hoe weet ik zeker dat dit een effectieve vorm van therapie is?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem
+                                        facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-primary collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                    Hoe lang duurt het om van stress af te komen?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem
+                                        facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mt-2">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-primary collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">
+                                    Hoeveel kost het?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem
+                                        facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quidem facere
+                                        deserunt sint animi sapiente vitae suscipit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="support-button text-center mt-4">
+                        <h5 class="text-primary pt-4">Kunt u uw antwoorden niet vinden?</h4>
+                            <h5 class="text-primary"><b>Neem contact met ons op</b></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#contact" class="btn down-arrow text-primary" style="bottom: -90px;">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+    </div>
+    <!-- FAQ End -->
+
+
+
+    <!-- Contact Start -->
+    <div class="footer bg-texture bg-primary" id="contact">
+        <div class="container">
+            <div class="section-header text-center py-3">
+                <h2 class="text-white">Contact</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <form method="POST" id="contactForm" name="contactForm" class="contactForm position-relative"
+                        novalidate="novalidate" style="z-index: 1;">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Naam">
+                                </div>
+                            </div>
+                            <div class="col-6 pl-0">
+                                <div class="input-group input-group-lg">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="E-mailen">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group input-group-lg">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                        placeholder="Onderwerp">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="input-group input-group-lg">
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="3"
+                                        placeholder="Bericht"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" value="Bericht versturen"
+                                    class="btn bg-light text-primary rounded float-end px-4 py-3">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-info px-4">
+                        <h3 class="color-white mb-5">Ontspan<b>Vrij</b></h3>
+                        <h6 class="d-flex text-start align-items-center mb-4">
+                            <i class="fa-solid fa-xl fa-location-dot text-white me-3"></i>
+                            <a href="https://goo.gl/maps/iJDN4hoo4yQVQ4zc7" target="_blank" rel="noopener noreferrer"
+                                class="color-white">33
+                                Long Street,<br>Los Angeles, USA</a>
+                        </h6>
+                        <h6 class="d-flex text-start align-items-center mb-4">
+                            <i class="fa-solid fa-xl fa-phone text-white me-3"></i>
+                            <a href="tel:+12345678900" class="color-white">+1 234 567 8900</a>
+                        </h6>
+                        <h6 class="d-flex text-start align-items-center mb-4">
+                            <i class="fa-regular fa-xl fa-envelope text-white me-3"></i>
+                            <a href="mailto:contact@ontspanvrij.nl" class="color-white">contact@ontspanvrij.nl</a>
+                        </h6>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <a href="https://goo.gl/maps/iJDN4hoo4yQVQ4zc7" target="_blank" rel="noopener noreferrer">
+                        <div class="about-img morphing-img"
+                            style="width: 100%; height: 320px; background-image: url(img/maps.jpg)">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+    <div class="footer bg-texture bg-primary">
+        <div class="container-fluid">
+            <div class="container copyright">
+                <div class="row">
+                    <div class="footer-social col-md-4">
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-youtube"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <p>&copy; Ontspan<b>Vrij</b>. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <p>Designed By <a href="https://primsite.ro" target="_blank"><b>PrimSite</b></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <a href="#" class="back-to-top bg-light rounded"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
